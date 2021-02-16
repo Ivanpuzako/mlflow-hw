@@ -1,0 +1,23 @@
+ 
+version: "3"
+
+services:
+  server:
+    build: server/
+   # command: python app.py
+    env_file:
+      environment.env 
+
+    ports:
+      - "5000:5000"
+
+  client:
+    build: client/
+    env_file:
+      environment.env 
+  
+  #  network_mode: host
+    depends_on:
+      - server
+
+  #  command: nodemon server.js
